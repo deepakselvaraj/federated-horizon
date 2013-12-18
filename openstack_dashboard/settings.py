@@ -34,11 +34,10 @@ BIN_DIR = os.path.abspath(os.path.join(ROOT_PATH, '..', 'bin'))
 if ROOT_PATH not in sys.path:
     sys.path.append(ROOT_PATH)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 SITE_BRANDING = 'OpenStack Dashboard'
-
 LOGIN_URL = '/auth/login/'
 LOGOUT_URL = '/auth/logout/'
 # LOGIN_REDIRECT_URL can be used as an alternative for
@@ -46,12 +45,21 @@ LOGOUT_URL = '/auth/logout/'
 # Do not set it to '/home/', as this will cause circular redirect loop
 LOGIN_REDIRECT_URL = '/'
 
+OPENSTACK_KEYSTONE_URL = 'http://localhost:5000/v2.0'
+OPENSTACK_KEYSTONE_FEDERATED_SUPPORT = True
+OPENSTACK_KEYSTONE_FEDERATED_URL = 'http://localhost:5000/v2.0'
+OPENSTACK_FEDERATED_HORIZON_CALLBACK_URL = 'http://csvm2c4d.kent.ac.uk:8000/admin/'
+OPENSTACK_FEDERATED_DEFAULT_LOGIN = 'admin'
+OPENSTACK_FEDERATED_DEFAULT_PASSWORD = 'amma'
+
 MEDIA_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'media'))
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'static'))
 STATIC_URL = '/static/'
 
 ROOT_URLCONF = 'openstack_dashboard.urls'
+
+SECRET_KEY = '_bk@x&a1^j$*)^c1)d$-$mde_b-ve-b50imoed-bzf39l8o-zy'
 
 HORIZON_CONFIG = {
     'dashboards': ('project', 'admin', 'settings',),
@@ -174,6 +182,7 @@ USE_L10N = True
 USE_TZ = True
 
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = 'Member'
+
 
 DEFAULT_EXCEPTION_REPORTER_FILTER = 'horizon.exceptions.HorizonReporterFilter'
 
